@@ -1,0 +1,25 @@
+
+.form-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.info-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 15px;
+}
+
+.input-invalid {
+    border: solid 1px red;
+}
+
+.funcionario-list-content {
+    display: flex;
+    column-gap: 50px;
+    padding: 20px;
+    font-size: 22px;
+    font-family: cursive;
+}

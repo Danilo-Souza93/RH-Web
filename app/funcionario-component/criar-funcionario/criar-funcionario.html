@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./criar-funcionario.css" />
+  </head>
+  <body>
+    <container>
+      <form class="form-content">
+        <div class="info-content">
+          <a>Dados do Funcionario</a>
+          <label for="nome">Nome do funcionario:</label>
+          <input
+            type="text"
+            name="nome"
+            id="nome"
+            placeholder="Fulano de Tal"
+            onchange="inputTextValidation(id)"
+          />
+          <label for="idade">Idade do funcionario</label>
+          <input type="date" name="idade" id="idade" placeholder="dd/mm/aaaa"/>
+        </div>
+
+        <div class="info-content">
+          <a>Endereço do Funcionario</a>
+          <label for="rua">Nome da rua:</label>
+          <input type="text" name="rua" id="rua" onchange="inputTextValidation(id)"/>
+          <label for="numero">Numero da casa:</label>
+          <input type="text" name="numero" id="numero" onchange="inputNumberValidation(id)"/>
+          <label for="cidade">Cidade:</label>
+          <input type="text" name="cidade" id="cidade" onchange="inputTextValidation(id)"/>
+          <label for="estado">Estado:</label>
+          <select name="estado" id="estado">
+            <option value="" selected disabled>Selecione o Estado</option>
+          </select>
+          <label for="pais">País:</label>
+          <input type="text" name="pais" id="pais" onchange="inputTextValidation(id)">
+        </div>
+
+        <div class="info-content">
+          <a>Registro de Trabalho</a>
+          <label for="cargo">Insira o cargo do funcionario:</label>
+          <input
+            type="text"
+            name="cargo"
+            id="cargo"
+            placeholder="Auxiliar Administrativo"
+            onchange="inputTextValidation(id)"
+          />
+          <label for="departamento">Insira o departamento do funcionario:</label>
+          <input
+            type="text"
+            name="departamento"
+            id="departamento"
+            placeholder="Financeiro"
+            onchange="inputTextValidation(id)"
+          />
+        </div>
+      </form>
+
+      <button id="criar" onclick="criarFuncionario()">Criar</button>
+
+    </container>
+
+    <container id="list" hidden></container>
+
+    <script src="./criar-funcionario.js"></script>
+    <script src="../../Classes/endereco.js"></script>
+    <script src="../../Classes/funcionario.js"></script>
+  </body>
+</html>

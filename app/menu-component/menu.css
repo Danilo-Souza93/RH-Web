@@ -1,0 +1,51 @@
+.menu-container {
+    display: flex;
+    border: solid 1px black;
+    flex-direction: column;
+    padding: 32px;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+
+    width: 300px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+
+    text-align: center;
+
+    border-bottom: solid 3px black;
+}
+
+.img-content {
+    width: 200px;
+    padding: 10px;
+
+    word-wrap: normal;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    border-radius: 10px;
+}
+
+.img {
+    width: 32px;
+    margin-right: 10px;
+}
+
+
+.text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 22px;
+}
+
+.img-content:hover {
+    cursor: pointer;
+    background-color: blanchedalmond;
+}
+
