@@ -1,0 +1,32 @@
+.funcionario-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.funcionario-content-header {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 12px;
+    margin-bottom: 8px;
+
+    border: solid 1px black;
+    border-radius: 15px;
+    
+}
+
+.text {
+    font-size: 22;
+}
+
+.arrow {
+    width: 14px;
+}
+
+.edit-btn {
+
+}
+
+.delete-btn {
+
+}
