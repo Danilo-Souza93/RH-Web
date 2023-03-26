@@ -88,18 +88,27 @@ function config() {
 
 function showHiddenInfo(id) {
   if (document.getElementById("innerDiv_" + id)) {
+
     let toggleDiv = document.getElementById("innerDiv_" + id);
-    toggleDiv.hasAttribute("hidden")? 
-        toggleDiv.removeAttribute("hidden"): 
+
+    if (toggleDiv.hasAttribute("hidden")) { 
+        toggleDiv.removeAttribute("hidden");
+        toggleDiv.classList.add("innerDiv-content");
+    } else {
         toggleDiv.setAttribute("hidden","");
+        toggleDiv.classList.remove("innerDiv-content");
+    }
+
   } else {
     let div = document.getElementById(id);
 
     let innerDiv = document.createElement("div");
     innerDiv.setAttribute("id", "innerDiv_" + id);
+    innerDiv.classList.add("innerDiv-content");
 
     let labelName = document.createElement("label");
     labelName.setAttribute("for", "inpName_"+id);
+    labelName.innerText = "Nome:";
     
     let inpName = document.createElement("input");
     inpName.setAttribute("type","text");
@@ -109,6 +118,7 @@ function showHiddenInfo(id) {
 
     let labelIdade = document.createElement("label");
     labelIdade.setAttribute("for", "inpIdade_"+id);
+    labelIdade.innerText = "Idade:"
     
     let inpIdade = document.createElement("input");
     inpIdade.setAttribute("type","text");
@@ -118,6 +128,7 @@ function showHiddenInfo(id) {
 
     let labelCargo = document.createElement("label");
     labelCargo.setAttribute("for", "inpCargo_"+id);
+    labelCargo.innerText = "Cargo";
 
     let inpCargo = document.createElement("input");
     inpCargo.setAttribute("type","text");
@@ -127,6 +138,7 @@ function showHiddenInfo(id) {
 
     let labelRua = document.createElement("label");
     labelRua.setAttribute("for", "inpRua_"+id);
+    labelRua.innerText = "Rua:";
 
     let inpRua = document.createElement("input");
     inpRua.setAttribute("type","text");
@@ -136,6 +148,7 @@ function showHiddenInfo(id) {
 
     let labelNumber = document.createElement("label");
     labelNumber.setAttribute("for", "inpNumer_"+id);
+    labelNumber.innerText = "Numero:"
 
     let inpNumero = document.createElement("input");
     inpRua.setAttribute("type","text");
@@ -145,6 +158,7 @@ function showHiddenInfo(id) {
 
     let labelEstado = document.createElement("label");
     labelEstado.setAttribute("for", "inpEstado_"+id);
+    labelEstado.innerText = "Estado";
 
     let inpEstado = document.createElement("input");
     inpEstado.setAttribute("type","text");
@@ -154,6 +168,7 @@ function showHiddenInfo(id) {
 
     let labelPais = document.createElement("label");
     labelPais.setAttribute("for", "inpPais_"+id);
+    labelPais.innerText = "Pais:";
 
     let inpPais = document.createElement("input");
     inpPais.setAttribute("type","text");
@@ -163,6 +178,7 @@ function showHiddenInfo(id) {
 
     let labelDepartamento = document.createElement("label");
     labelDepartamento.setAttribute("for", "inpDepartamento_"+id);
+    labelDepartamento.innerText = "Departamento";
 
     let inpDepartamento = document.createElement("input");
     inpDepartamento.setAttribute("type","text");
@@ -173,28 +189,67 @@ function showHiddenInfo(id) {
     editBtn.setAttribute("id", "editBtn_" + id);
     editBtn.classList.add("edit-btn");
     editBtn.addEventListener("click", editFuncionario.bind(null, editBtn.id));
+    editBtn.innerText = "Editar"
 
     let deleteBtn = document.createElement("button");
     deleteBtn.setAttribute("id", "deleteBtn_" + id);
     deleteBtn.classList.add("delete-btn");
     deleteBtn.addEventListener("click", deleteFuncionario.bind(null, deleteBtn.id));
+    deleteBtn.innerText = "Deletar"
 
-    innerDiv.appendChild(labelName);
-    innerDiv.appendChild(inpName);
-    innerDiv.appendChild(labelIdade);
-    innerDiv.appendChild(inpIdade);
-    innerDiv.appendChild(labelCargo);
-    innerDiv.appendChild(inpCargo);
-    innerDiv.appendChild(labelRua);
-    innerDiv.appendChild(inpRua);
-    innerDiv.appendChild(labelNumber);
-    innerDiv.appendChild(inpNumero);
-    innerDiv.appendChild(labelEstado);
-    innerDiv.appendChild(inpEstado);
-    innerDiv.appendChild(labelPais);
-    innerDiv.appendChild(inpPais);
-    innerDiv.appendChild(labelDepartamento);
-    innerDiv.appendChild(inpDepartamento);
+    let nameDiv = document.createElement("div");
+    nameDiv.classList.add("input-content");
+    nameDiv.appendChild(labelName);
+    nameDiv.appendChild(inpName);
+    innerDiv.appendChild(nameDiv);
+
+    let idadeDiv = document.createElement("div");
+    idadeDiv.classList.add("input-content");
+    idadeDiv.appendChild(labelIdade);
+    idadeDiv.appendChild(inpIdade);
+    innerDiv.appendChild(idadeDiv);
+
+    let cargoDiv = document.createElement("div");
+    cargoDiv.classList.add("input-content");
+    cargoDiv.appendChild(labelCargo);
+    cargoDiv.appendChild(inpCargo);
+    innerDiv.appendChild(cargoDiv);
+
+    let ruaDiv = document.createElement("div");
+    ruaDiv.classList.add("input-content");
+    ruaDiv.appendChild(labelRua);
+    ruaDiv.appendChild(inpRua);
+    innerDiv.appendChild(ruaDiv);
+
+    let numberDiv = document.createElement("div");
+    numberDiv.classList.add("input-content");
+    numberDiv.appendChild(labelNumber);
+    numberDiv.appendChild(inpNumero);
+    innerDiv.appendChild(numberDiv);
+
+    let estadoDiv = document.createElement("div");
+    estadoDiv.classList.add("input-content");
+    estadoDiv.appendChild(labelEstado);
+    estadoDiv.appendChild(inpEstado);
+    innerDiv.appendChild(estadoDiv);
+
+    let paisDiv = document.createElement("div");
+    paisDiv.classList.add("input-content");
+    paisDiv.appendChild(labelPais);
+    paisDiv.appendChild(inpPais);
+    innerDiv.appendChild(paisDiv);
+
+    let departamentoDiv = document.createElement("div");
+    departamentoDiv.classList.add("input-content");
+    departamentoDiv.appendChild(labelDepartamento);
+    departamentoDiv.appendChild(inpDepartamento);
+    innerDiv.appendChild(departamentoDiv);
+
+    let btnDiv = document.createElement("div");
+    btnDiv.classList.add("btn-content");
+    btnDiv.appendChild(editBtn);
+    btnDiv.appendChild(deleteBtn);
+    innerDiv.appendChild(btnDiv);
 
     div.appendChild(innerDiv);
   }
