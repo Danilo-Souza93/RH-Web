@@ -59,23 +59,22 @@ function config() {
   let content = document.getElementById("funcionario-list-content");
 
   funcionarioList.forEach((funcionario, i) => {
-
     let outDiv = document.createElement("div");
     outDiv.classList.add("funcionario-content");
     outDiv.setAttribute("id", i);
 
     let div = document.createElement("div");
     div.classList.add("funcionario-content-header");
-    
+
     div.addEventListener("click", showHiddenInfo.bind(null, outDiv.id));
 
     let a = document.createElement("a");
     a.classList.add("text");
     a.innerText = funcionario.nome;
-    
+
     let arrow = document.createElement("img");
     arrow.classList.add("arrow");
-    arrow.setAttribute("src","../../../imgs/arrow-down-svgrepo-com.svg");
+    arrow.setAttribute("src", "../../../imgs/arrow-down-svgrepo-com.svg");
 
     div.appendChild(a);
     div.appendChild(arrow);
@@ -88,17 +87,15 @@ function config() {
 
 function showHiddenInfo(id) {
   if (document.getElementById("innerDiv_" + id)) {
-
     let toggleDiv = document.getElementById("innerDiv_" + id);
 
-    if (toggleDiv.hasAttribute("hidden")) { 
-        toggleDiv.removeAttribute("hidden");
-        toggleDiv.classList.add("innerDiv-content");
+    if (toggleDiv.hasAttribute("hidden")) {
+      toggleDiv.removeAttribute("hidden");
+      toggleDiv.classList.add("innerDiv-content");
     } else {
-        toggleDiv.setAttribute("hidden","");
-        toggleDiv.classList.remove("innerDiv-content");
+      toggleDiv.setAttribute("hidden", "");
+      toggleDiv.classList.remove("innerDiv-content");
     }
-
   } else {
     let div = document.getElementById(id);
 
@@ -107,95 +104,97 @@ function showHiddenInfo(id) {
     innerDiv.classList.add("innerDiv-content");
 
     let labelName = document.createElement("label");
-    labelName.setAttribute("for", "inpName_"+id);
+    labelName.setAttribute("for", "inpName_" + id);
     labelName.innerText = "Nome:";
-    
+
     let inpName = document.createElement("input");
-    inpName.setAttribute("type","text");
+    inpName.setAttribute("type", "text");
     inpName.setAttribute("value", funcionarioList[id].nome);
-    inpName.setAttribute("id", "inpName_"+id);
+    inpName.setAttribute("id", "inpName_" + id);
     inpName.setAttribute("readonly", "");
 
     let labelIdade = document.createElement("label");
-    labelIdade.setAttribute("for", "inpIdade_"+id);
-    labelIdade.innerText = "Idade:"
-    
+    labelIdade.setAttribute("for", "inpIdade_" + id);
+    labelIdade.innerText = "Idade:";
+
     let inpIdade = document.createElement("input");
-    inpIdade.setAttribute("type","text");
+    inpIdade.setAttribute("type", "text");
     inpIdade.setAttribute("value", funcionarioList[id].idade);
-    inpIdade.setAttribute("id", "inpIdade_"+id);
+    inpIdade.setAttribute("id", "inpIdade_" + id);
     inpIdade.setAttribute("readonly", "");
 
     let labelCargo = document.createElement("label");
-    labelCargo.setAttribute("for", "inpCargo_"+id);
+    labelCargo.setAttribute("for", "inpCargo_" + id);
     labelCargo.innerText = "Cargo";
 
     let inpCargo = document.createElement("input");
-    inpCargo.setAttribute("type","text");
+    inpCargo.setAttribute("type", "text");
     inpCargo.setAttribute("value", funcionarioList[id].cargo);
-    inpCargo.setAttribute("id", "inpCargo_"+id);
+    inpCargo.setAttribute("id", "inpCargo_" + id);
     inpCargo.setAttribute("readonly", "");
 
     let labelRua = document.createElement("label");
-    labelRua.setAttribute("for", "inpRua_"+id);
+    labelRua.setAttribute("for", "inpRua_" + id);
     labelRua.innerText = "Rua:";
 
     let inpRua = document.createElement("input");
-    inpRua.setAttribute("type","text");
+    inpRua.setAttribute("type", "text");
     inpRua.setAttribute("value", funcionarioList[id].endereco.rua);
-    inpRua.setAttribute("id", "inpRua_"+id);
+    inpRua.setAttribute("id", "inpRua_" + id);
     inpRua.setAttribute("readonly", "");
 
     let labelNumber = document.createElement("label");
-    labelNumber.setAttribute("for", "inpNumer_"+id);
-    labelNumber.innerText = "Numero:"
+    labelNumber.setAttribute("for", "inpNumer_" + id);
+    labelNumber.innerText = "Numero:";
 
     let inpNumero = document.createElement("input");
-    inpRua.setAttribute("type","text");
+    inpRua.setAttribute("type", "text");
     inpNumero.setAttribute("value", funcionarioList[id].endereco.numero);
-    inpNumero.setAttribute("id", "inpNumber_"+id);
+    inpNumero.setAttribute("id", "inpNumber_" + id);
     inpNumero.setAttribute("readonly", "");
 
     let labelEstado = document.createElement("label");
-    labelEstado.setAttribute("for", "inpEstado_"+id);
+    labelEstado.setAttribute("for", "inpEstado_" + id);
     labelEstado.innerText = "Estado";
 
     let inpEstado = document.createElement("input");
-    inpEstado.setAttribute("type","text");
+    inpEstado.setAttribute("type", "text");
     inpEstado.setAttribute("value", funcionarioList[id].endereco.estado);
-    inpEstado.setAttribute("id", "inpEstado_"+id);
+    inpEstado.setAttribute("id", "inpEstado_" + id);
     inpEstado.setAttribute("readonly", "");
 
     let labelPais = document.createElement("label");
-    labelPais.setAttribute("for", "inpPais_"+id);
+    labelPais.setAttribute("for", "inpPais_" + id);
     labelPais.innerText = "Pais:";
 
     let inpPais = document.createElement("input");
-    inpPais.setAttribute("type","text");
+    inpPais.setAttribute("type", "text");
     inpPais.setAttribute("value", funcionarioList[id].endereco.pais);
-    inpPais.setAttribute("id", "inpPais_"+id);
+    inpPais.setAttribute("id", "inpPais_" + id);
     inpPais.setAttribute("readonly", "");
 
     let labelDepartamento = document.createElement("label");
-    labelDepartamento.setAttribute("for", "inpDepartamento_"+id);
+    labelDepartamento.setAttribute("for", "inpDepartamento_" + id);
     labelDepartamento.innerText = "Departamento";
 
     let inpDepartamento = document.createElement("input");
-    inpDepartamento.setAttribute("type","text");
-    inpDepartamento.setAttribute("id", "inpDepartamento_"+id);
+    inpDepartamento.setAttribute("type", "text");
+    inpDepartamento.setAttribute("id", "inpDepartamento_" + id);
     inpDepartamento.setAttribute("readonly", "");
 
+
+    //CRIAÇÃO DE BOTÕES
     let editBtn = document.createElement("button");
     editBtn.setAttribute("id", "editBtn_" + id);
     editBtn.classList.add("edit-btn");
-    editBtn.addEventListener("click", editFuncionario.bind(null, editBtn.id));
-    editBtn.innerText = "Editar"
+    editBtn.addEventListener("click", editFuncionario.bind(null, id, funcionarioList));
+    editBtn.innerText = "Editar";
 
     let deleteBtn = document.createElement("button");
     deleteBtn.setAttribute("id", "deleteBtn_" + id);
     deleteBtn.classList.add("delete-btn");
-    deleteBtn.addEventListener("click", deleteFuncionario.bind(null, deleteBtn.id));
-    deleteBtn.innerText = "Deletar"
+    deleteBtn.addEventListener("click", deleteFuncionario.bind(null, id, funcionarioList));
+    deleteBtn.innerText = "Deletar";
 
     let nameDiv = document.createElement("div");
     nameDiv.classList.add("input-content");
@@ -246,6 +245,7 @@ function showHiddenInfo(id) {
     innerDiv.appendChild(departamentoDiv);
 
     let btnDiv = document.createElement("div");
+    btnDiv.setAttribute("id", "btnDiv_" + id);
     btnDiv.classList.add("btn-content");
     btnDiv.appendChild(editBtn);
     btnDiv.appendChild(deleteBtn);
@@ -255,10 +255,75 @@ function showHiddenInfo(id) {
   }
 }
 
-function editFuncionario(id) {
+function editFuncionario(id, funcionarioList) {
+  let inpName = document.getElementById("inpName_" + id);
+  inpName.removeAttribute("readonly");
+
+  let inpIdade = document.getElementById("inpIdade_" + id);
+  inpIdade.removeAttribute("readonly");
+
+  let inpCargo = document.getElementById("inpCargo_" + id);
+  inpCargo.removeAttribute("readonly");
+
+  let inpRua = document.getElementById("inpRua_" + id);
+  inpRua.removeAttribute("readonly");
+
+  let inpEstado = document.getElementById("inpEstado_" + id);
+  inpEstado.removeAttribute("readonly");
+
+  let inpPais = document.getElementById("inpPais_" + id);
+  inpPais.removeAttribute("readonly");
+
+  let inpDepartamento = document.getElementById("inpDepartamento_" + id);
+  inpDepartamento.removeAttribute("inpDepartamento_" + id);
+
+  let btnDiv = document.getElementById("btnDiv_" + id);
+
+  let saveEdit = document.createElement("button");
+  saveEdit.setAttribute("id", "saveEditBtn_" + id);
+  saveEdit.innerText = "Salvar"
+  console.log(id);
+  saveEdit.addEventListener("click", saveEdition.bind(null, id, funcionarioList));
+  
+  btnDiv.appendChild(saveEdit);
 
 }
 
-function deleteFuncionario(id) {
+function deleteFuncionario(id, funcionarioList) {}
 
+function saveEdition(id) {
+  console.log(id);
+  
+  let inpName = document.getElementById("inpName_" + id);
+  inpName.setAttribute("value", funcionarioList[id].nome);
+  inpName.setAttribute("readonly", "");
+
+  let inpIdade = document.getElementById("inpIdade_"+id);
+  inpIdade.setAttribute("value", funcionarioList[id].idade);
+  inpIdade.setAttribute("readonly", "");
+
+  let inpCargo = document.getElementById("inpCargo_"+id);
+  inpCargo.setAttribute("value", funcionarioList[id].cargo);
+  inpCargo.setAttribute("readonly", "");
+
+  let inpRua = document.getElementById("inpRua_"+id);
+  inpRua.setAttribute("value", funcionarioList[id].endereco.rua);
+  inpRua.setAttribute("readonly", "");
+
+  let inpNumero = document.getElementById("inpNumber_"+id);
+  inpNumero.setAttribute("value", funcionarioList[id].endereco.numero);
+  inpNumero.setAttribute("readonly", "");
+
+  let inpEstado = document.getElementById("inpEstado_"+id);
+  inpEstado.setAttribute("value", funcionarioList[id].endereco.estado);
+  inpEstado.setAttribute("readonly", "");
+
+  let inpPais = document.getElementById("inpPais_"+id);
+  inpPais.setAttribute("value", funcionarioList[id].endereco.pais);
+  inpPais.setAttribute("readonly", "");
+
+  let btnDiv = document.getElementById("btnDiv_" + id);
+  let saveBtn = document.getElementById("saveEditBtn_" + id);
+  btnDiv.removeChild(saveBtn);
+  this.showHiddenInfo(id);
 }

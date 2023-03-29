@@ -56,10 +56,14 @@
     flex-direction: column;
 }
 
-.edit-btn {
+readonly {
+    border: none;
+}
 
+.edit-btn {
+    background-color: yellow;
 }
 
 .delete-btn {
-
+    background-color: red;
 }
