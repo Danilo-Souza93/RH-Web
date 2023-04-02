@@ -7,6 +7,29 @@
     <link rel="stylesheet" href="./criar-departamento.css" />
   </head>
   <body>
+    <h1>Criar Departamento Works</h1>
+
+    <container>
+      <form class="form-content">
+        <div class="info-content">
+          <label for="nome">Nome do departamento:</label>
+          <input
+            type="text"
+            name="nome"
+            id="nome"
+            placeholder="RH"
+            onchange="inputTextValidation(id)"
+          />
+        </div>
+      </form>
+
+      <button id="criar" onclick="criarDepartamento()">Criar</button>
+
+    </container>
+
+    <container id="list" hidden></container>
+
+    <script src="../../Classes/departamento.js"></script>
     <script src="./criar-departamento.js"></script>
   </body>
 </html>

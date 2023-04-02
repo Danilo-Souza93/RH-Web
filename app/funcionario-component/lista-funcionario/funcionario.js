@@ -1,60 +1,62 @@
 window.onload = config;
 
+let funcionarioList = [
+  new Funcionario(
+    nome= "Danilo Jesus Souza",
+    idade= "04/07/1993",
+    cargo= "Analista de Sistemas",
+
+    new Endereco(
+      rua= "Rua Tokio",
+      numero= "165",
+      cidade= "Suzano",
+      estado= "SP",
+      pais= "Brazil",
+    ),
+    departamentoNome= "TI",
+  ),
+  new Funcionario(
+    nome= "Jenniffer Raissa Rocha",
+    idade= "31/003/1996",
+    cargo= "Enfermeira",
+    endereco= new Endereco(
+      rua= "St Henrique",
+      numero= "673",
+      cidade= "São Paulo",
+      estado= "SP",
+      pais= "Brazil",
+    ),
+    departamentoNome= "Saúde",
+  ),
+  new Funcionario(
+    nome = "Bianca",
+    idade = "04/07/2004",
+    cargo = "Analista de Sistemas",
+    endereco = new Endereco(
+      rua = "Rua Tokio",
+      numero = "165",
+      cidade = "Suzano",
+      estado = "SP",
+      pais = "Brazil"
+    ),
+    departamentoNome = "TI"
+  ),
+  new Funcionario(
+    nome = "Xablau da Silva",
+    idade = "04/07/1993",
+    cargo = "Analista de Sistemas",
+    endereco = new Endereco(
+      rua = "Rua Tokio",
+      numero = "165",
+      cidade = "Suzano",
+      estado= "SP",
+      pais = "Brazil"
+    ),
+    departamentoNome = "TI"
+  ),
+];
+
 function config() {
-  funcionarioList = [
-    new Funcionario(
-      (nome = "Danilo Jesus Souza"),
-      (idade = "04/07/1993"),
-      (cargo = "Analista de Sistemas"),
-      new Endereco(
-        (rua = "Rua Tokio"),
-        (numero = "165"),
-        (cidade = "Suzano"),
-        (estado = "SP"),
-        (pais = "Brazil")
-      ),
-      (departamentoNome = "TI")
-    ),
-    new Funcionario(
-      (nome = "Jenniffer Raissa Rocha"),
-      (idade = "31/003/1996"),
-      (cargo = "Enfermeira"),
-      new Endereco(
-        (rua = "St Henrique"),
-        (numero = "673"),
-        (cidade = "São Paulo"),
-        (estado = "SP"),
-        (pais = "Brazil")
-      ),
-      (departamentoNome = "Saúde")
-    ),
-    new Funcionario(
-      (nome = "Bianca"),
-      (idade = "04/07/2004"),
-      (cargo = "Analista de Sistemas"),
-      new Endereco(
-        (rua = "Rua Tokio"),
-        (numero = "165"),
-        (cidade = "Suzano"),
-        (estado = "SP"),
-        (pais = "Brazil")
-      ),
-      (departamentoNome = "TI")
-    ),
-    new Funcionario(
-      (nome = "Xablau da Silva"),
-      (idade = "04/07/1993"),
-      (cargo = "Analista de Sistemas"),
-      new Endereco(
-        (rua = "Rua Tokio"),
-        (numero = "165"),
-        (cidade = "Suzano"),
-        (estado = "SP"),
-        (pais = "Brazil")
-      ),
-      (departamentoNome = "TI")
-    ),
-  ];
 
   let content = document.getElementById("funcionario-list-content");
 
@@ -69,6 +71,7 @@ function config() {
     div.addEventListener("click", showHiddenInfo.bind(null, outDiv.id));
 
     let a = document.createElement("a");
+    a.setAttribute("id", "a_" + i);
     a.classList.add("text");
     a.innerText = funcionario.nome;
 
@@ -148,7 +151,7 @@ function showHiddenInfo(id) {
     labelNumber.innerText = "Numero:";
 
     let inpNumero = document.createElement("input");
-    inpRua.setAttribute("type", "text");
+    inpNumero.setAttribute("type", "text");
     inpNumero.setAttribute("value", funcionarioList[id].endereco.numero);
     inpNumero.setAttribute("id", "inpNumber_" + id);
     inpNumero.setAttribute("readonly", "");
@@ -182,18 +185,23 @@ function showHiddenInfo(id) {
     inpDepartamento.setAttribute("id", "inpDepartamento_" + id);
     inpDepartamento.setAttribute("readonly", "");
 
-
     //CRIAÇÃO DE BOTÕES
     let editBtn = document.createElement("button");
     editBtn.setAttribute("id", "editBtn_" + id);
     editBtn.classList.add("edit-btn");
-    editBtn.addEventListener("click", editFuncionario.bind(null, id, funcionarioList));
+    editBtn.addEventListener(
+      "click",
+      editFuncionario.bind(null, id)
+    );
     editBtn.innerText = "Editar";
 
     let deleteBtn = document.createElement("button");
     deleteBtn.setAttribute("id", "deleteBtn_" + id);
     deleteBtn.classList.add("delete-btn");
-    deleteBtn.addEventListener("click", deleteFuncionario.bind(null, id, funcionarioList));
+    deleteBtn.addEventListener(
+      "click",
+      deleteFuncionario.bind(null, id)
+    );
     deleteBtn.innerText = "Deletar";
 
     let nameDiv = document.createElement("div");
@@ -255,7 +263,7 @@ function showHiddenInfo(id) {
   }
 }
 
-function editFuncionario(id, funcionarioList) {
+function editFuncionario(id) {
   let inpName = document.getElementById("inpName_" + id);
   inpName.removeAttribute("readonly");
 
@@ -281,49 +289,67 @@ function editFuncionario(id, funcionarioList) {
 
   let saveEdit = document.createElement("button");
   saveEdit.setAttribute("id", "saveEditBtn_" + id);
-  saveEdit.innerText = "Salvar"
-  console.log(id);
-  saveEdit.addEventListener("click", saveEdition.bind(null, id, funcionarioList));
-  
+  saveEdit.innerText = "Salvar";
+  saveEdit.addEventListener(
+    "click",
+    saveEdition.bind(null, id)
+  );
+
   btnDiv.appendChild(saveEdit);
+}
+
+function deleteFuncionario(id) {
+
+  funcionarioList.pop(funcionarioList[id]);
+  let div = document.getElementById("funcionario-list-content");
+  let child = document.getElementById(id);
+  div.removeChild(child);
 
 }
 
-function deleteFuncionario(id, funcionarioList) {}
-
 function saveEdition(id) {
-  console.log(id);
-  
+
   let inpName = document.getElementById("inpName_" + id);
-  inpName.setAttribute("value", funcionarioList[id].nome);
+  inpName.setAttribute("value", inpName.value);
   inpName.setAttribute("readonly", "");
+  funcionarioList[id].nome = inpName.value;
 
-  let inpIdade = document.getElementById("inpIdade_"+id);
-  inpIdade.setAttribute("value", funcionarioList[id].idade);
+  let inpIdade = document.getElementById("inpIdade_" + id);
+  inpIdade.setAttribute("value", inpIdade.value);
   inpIdade.setAttribute("readonly", "");
+  funcionarioList[id].idade = inpIdade.value;
 
-  let inpCargo = document.getElementById("inpCargo_"+id);
-  inpCargo.setAttribute("value", funcionarioList[id].cargo);
+  let inpCargo = document.getElementById("inpCargo_" + id);
+  inpCargo.setAttribute("value", inpCargo.value);
   inpCargo.setAttribute("readonly", "");
+  funcionarioList[id].cargo = inpCargo.value;
 
-  let inpRua = document.getElementById("inpRua_"+id);
-  inpRua.setAttribute("value", funcionarioList[id].endereco.rua);
+  let inpRua = document.getElementById("inpRua_" + id);
+  inpRua.setAttribute("value", inpRua.value);
   inpRua.setAttribute("readonly", "");
+  funcionarioList[id].endereco.rua = inpRua.value;
 
-  let inpNumero = document.getElementById("inpNumber_"+id);
-  inpNumero.setAttribute("value", funcionarioList[id].endereco.numero);
+  let inpNumero = document.getElementById("inpNumber_" + id);
+  inpNumero.setAttribute("value", inpNumero.value);
   inpNumero.setAttribute("readonly", "");
+  funcionarioList[id].endereco.numero = inpNumero.value;
 
-  let inpEstado = document.getElementById("inpEstado_"+id);
-  inpEstado.setAttribute("value", funcionarioList[id].endereco.estado);
+  let inpEstado = document.getElementById("inpEstado_" + id);
+  inpEstado.setAttribute("value", inpEstado.value);
   inpEstado.setAttribute("readonly", "");
+  funcionarioList[id].endereco.estado = inpEstado.value;
 
-  let inpPais = document.getElementById("inpPais_"+id);
-  inpPais.setAttribute("value", funcionarioList[id].endereco.pais);
+  let inpPais = document.getElementById("inpPais_" + id);
+  inpPais.setAttribute("value", inpPais.value);
   inpPais.setAttribute("readonly", "");
+  funcionarioList[id].endereco.pais = inpPais.value;
 
   let btnDiv = document.getElementById("btnDiv_" + id);
   let saveBtn = document.getElementById("saveEditBtn_" + id);
+
+  let a = document.getElementById("a_" + id);
+  a.innerText = funcionarioList[id].nome;
+  
   btnDiv.removeChild(saveBtn);
   this.showHiddenInfo(id);
 }
