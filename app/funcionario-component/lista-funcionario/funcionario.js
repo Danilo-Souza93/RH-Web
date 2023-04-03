@@ -1,5 +1,7 @@
 window.onload = config;
 
+let rotation = 0;
+
 let funcionarioList = [
   new Funcionario(
     nome= "Danilo Jesus Souza",
@@ -77,6 +79,7 @@ function config() {
 
     let arrow = document.createElement("img");
     arrow.classList.add("arrow");
+    arrow.setAttribute("id", "img_" + i);
     arrow.setAttribute("src", "../../../imgs/arrow-down-svgrepo-com.svg");
 
     div.appendChild(a);
@@ -89,15 +92,20 @@ function config() {
 }
 
 function showHiddenInfo(id) {
+  
+  this.rotateArrow(id);
+
   if (document.getElementById("innerDiv_" + id)) {
     let toggleDiv = document.getElementById("innerDiv_" + id);
 
     if (toggleDiv.hasAttribute("hidden")) {
       toggleDiv.removeAttribute("hidden");
       toggleDiv.classList.add("innerDiv-content");
+
     } else {
       toggleDiv.setAttribute("hidden", "");
       toggleDiv.classList.remove("innerDiv-content");
+
     }
   } else {
     let div = document.getElementById(id);
@@ -115,6 +123,7 @@ function showHiddenInfo(id) {
     inpName.setAttribute("value", funcionarioList[id].nome);
     inpName.setAttribute("id", "inpName_" + id);
     inpName.setAttribute("readonly", "");
+    inpName.classList.add("readonly");
 
     let labelIdade = document.createElement("label");
     labelIdade.setAttribute("for", "inpIdade_" + id);
@@ -125,6 +134,7 @@ function showHiddenInfo(id) {
     inpIdade.setAttribute("value", funcionarioList[id].idade);
     inpIdade.setAttribute("id", "inpIdade_" + id);
     inpIdade.setAttribute("readonly", "");
+    inpIdade.classList.add("readonly");
 
     let labelCargo = document.createElement("label");
     labelCargo.setAttribute("for", "inpCargo_" + id);
@@ -135,6 +145,7 @@ function showHiddenInfo(id) {
     inpCargo.setAttribute("value", funcionarioList[id].cargo);
     inpCargo.setAttribute("id", "inpCargo_" + id);
     inpCargo.setAttribute("readonly", "");
+    inpCargo.classList.add("readonly");
 
     let labelRua = document.createElement("label");
     labelRua.setAttribute("for", "inpRua_" + id);
@@ -145,6 +156,7 @@ function showHiddenInfo(id) {
     inpRua.setAttribute("value", funcionarioList[id].endereco.rua);
     inpRua.setAttribute("id", "inpRua_" + id);
     inpRua.setAttribute("readonly", "");
+    inpRua.classList.add("readonly");
 
     let labelNumber = document.createElement("label");
     labelNumber.setAttribute("for", "inpNumer_" + id);
@@ -155,6 +167,7 @@ function showHiddenInfo(id) {
     inpNumero.setAttribute("value", funcionarioList[id].endereco.numero);
     inpNumero.setAttribute("id", "inpNumber_" + id);
     inpNumero.setAttribute("readonly", "");
+    inpNumero.classList.add("readonly");
 
     let labelEstado = document.createElement("label");
     labelEstado.setAttribute("for", "inpEstado_" + id);
@@ -165,6 +178,7 @@ function showHiddenInfo(id) {
     inpEstado.setAttribute("value", funcionarioList[id].endereco.estado);
     inpEstado.setAttribute("id", "inpEstado_" + id);
     inpEstado.setAttribute("readonly", "");
+    inpEstado.classList.add("readonly");
 
     let labelPais = document.createElement("label");
     labelPais.setAttribute("for", "inpPais_" + id);
@@ -175,6 +189,7 @@ function showHiddenInfo(id) {
     inpPais.setAttribute("value", funcionarioList[id].endereco.pais);
     inpPais.setAttribute("id", "inpPais_" + id);
     inpPais.setAttribute("readonly", "");
+    inpPais.classList.add("readonly");
 
     let labelDepartamento = document.createElement("label");
     labelDepartamento.setAttribute("for", "inpDepartamento_" + id);
@@ -184,6 +199,7 @@ function showHiddenInfo(id) {
     inpDepartamento.setAttribute("type", "text");
     inpDepartamento.setAttribute("id", "inpDepartamento_" + id);
     inpDepartamento.setAttribute("readonly", "");
+    inpDepartamento.classList.add("readonly");
 
     //CRIAÇÃO DE BOTÕES
     let editBtn = document.createElement("button");
@@ -266,21 +282,27 @@ function showHiddenInfo(id) {
 function editFuncionario(id) {
   let inpName = document.getElementById("inpName_" + id);
   inpName.removeAttribute("readonly");
+  inpName.classList.remove("readonly");
 
   let inpIdade = document.getElementById("inpIdade_" + id);
   inpIdade.removeAttribute("readonly");
+  inpIdade.classList.remove("readonly");
 
   let inpCargo = document.getElementById("inpCargo_" + id);
   inpCargo.removeAttribute("readonly");
+  inpCargo.classList.remove("readonly");
 
   let inpRua = document.getElementById("inpRua_" + id);
   inpRua.removeAttribute("readonly");
+  inpRua.classList.remove("readonly");
 
   let inpEstado = document.getElementById("inpEstado_" + id);
   inpEstado.removeAttribute("readonly");
+  inpEstado.classList.remove("readonly");
 
   let inpPais = document.getElementById("inpPais_" + id);
   inpPais.removeAttribute("readonly");
+  inpPais.classList.remove("readonly");
 
   let inpDepartamento = document.getElementById("inpDepartamento_" + id);
   inpDepartamento.removeAttribute("inpDepartamento_" + id);
@@ -352,4 +374,15 @@ function saveEdition(id) {
   
   btnDiv.removeChild(saveBtn);
   this.showHiddenInfo(id);
+}
+
+
+
+function rotateArrow(id) {
+
+  let arrow = document.getElementById("img_" + id);
+
+  rotation += 180;
+  arrow.style.transform = `rotate(${rotation}deg)`;
+
 }

@@ -71,7 +71,6 @@ function inputNumberValidation(id) {
   let rx = /^[0-9]+$/;
 
   if (rx.test(input.value)) {
-    console.log("valid");
     if (input.classList.contains("input-invalid")) {
       console.log("entrou no if");
       input.classList.remove("input-invalid");

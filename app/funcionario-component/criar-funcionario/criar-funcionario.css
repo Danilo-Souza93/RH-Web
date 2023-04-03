@@ -1,15 +1,67 @@
+.nav {
+    padding: 18px;
+    background: rgb(72, 43, 232);
+  
+    background: linear-gradient(
+      90deg,
+      rgba(122, 106, 252, 0.9) 0%,
+      rgba(40, 144, 203, 0.9) 56%,
+      rgba(4, 214, 177, 0.9) 100%
+    );
+  
+    font-size: 35px;
+    color: white;
+  
+    -webkit-box-shadow: 6px 7px 5px 0px rgba(184, 184, 184, 1);
+    -moz-box-shadow: 6px 7px 5px 0px rgba(184, 184, 184, 1);
+    box-shadow: 0px 5px 13px -2px rgb(184 184 184);
+}
+
+.create-btn {
+    width: 120px;
+    margin-left: 35px;
+    padding: 5px;
+
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(
+      90deg,
+      rgba(122, 106, 252, 0.4) 0%,
+      rgba(40, 144, 203, 0.4) 56%,
+      rgba(4, 214, 177, 0.4) 100%
+    );
+
+    color: rgb(72, 43, 232);
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.create-btn:hover {
+    cursor: pointer;
+    background: linear-gradient(
+      90deg,
+      rgba(122, 106, 252, 1) 0%,
+      rgba(40, 144, 203, 1) 56%,
+      rgba(4, 214, 177, 1) 100%
+    );
+}
+
+
 
 .form-content {
     display: flex;
     flex-direction: column;
     gap: 4px;
+    padding: 15px;
 }
 
 .info-content {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    padding: 15px;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .input-invalid {

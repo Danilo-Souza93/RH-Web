@@ -52,8 +52,6 @@ function inputTextValidation(id) {
   // Pega referemcia do input e botao
   let input = document.getElementById(id);
   let btn = document.getElementById("criar");
-  //
-
   let rx = /^[a-zA-Z\s]+$/;
 
   // valida com a expressão aceitando somente letras

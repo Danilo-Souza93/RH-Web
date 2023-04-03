@@ -1,5 +1,7 @@
 window.onload = config;
 
+let rotation = 0;
+
 let departamentoList = [
   new Departamento((departamentoNome = "RH")),
   new Departamento((departamentoNome = "Financeiro")),
@@ -26,6 +28,7 @@ function config() {
 
     let arrow = document.createElement("img");
     arrow.classList.add("arrow");
+    arrow.setAttribute("id", "img_" + i);
     arrow.setAttribute("src", "../../../imgs/arrow-down-svgrepo-com.svg");
 
     div.appendChild(a);
@@ -38,6 +41,9 @@ function config() {
 }
 
 function showHiddenInfo(id) {
+
+  this.rotateArrow(id);
+
   if (document.getElementById("innerDiv_" + id)) {
     let toggleDiv = document.getElementById("innerDiv_" + id);
 
@@ -64,6 +70,7 @@ function showHiddenInfo(id) {
     inpName.setAttribute("value", departamentoList[id].departamentoNome);
     inpName.setAttribute("id", "inpName_" + id);
     inpName.setAttribute("readonly", "");
+    inpName.classList.add("readonly");
 
     //CRIAÇÃO DE BOTÕES
     let editBtn = document.createElement("button");
@@ -98,6 +105,7 @@ function showHiddenInfo(id) {
 function editDepartamento(id) {
   let inpName = document.getElementById("inpName_" + id);
   inpName.removeAttribute("readonly");
+  inpName.classList.remove("readonly");
 
   let btnDiv = document.getElementById("btnDiv_" + id);
 
@@ -130,4 +138,13 @@ function saveEdition(id) {
 
   btnDiv.removeChild(saveBtn);
   this.showHiddenInfo(id);
+}
+
+function rotateArrow(id) {
+
+  let arrow = document.getElementById("img_" + id);
+
+  rotation += 180;
+  arrow.style.transform = `rotate(${rotation}deg)`;
+
 }
