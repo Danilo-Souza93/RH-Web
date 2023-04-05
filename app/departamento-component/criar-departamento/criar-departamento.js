@@ -64,6 +64,7 @@ function inputTextValidation(id) {
     // adiciona classe invalid no input e desabilita o botao
     input.classList.add("input-invalid");
     btn.setAttribute("disabled", "");
+    
   }
 }
 
